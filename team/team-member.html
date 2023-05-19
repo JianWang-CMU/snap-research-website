@@ -99,7 +99,7 @@
         logo: '../img/snap-logo.svg',
         fellowships: '../fellowships.html',
         computationalImaging: '../team/category/computational-imaging.html',
-        computationalSocialScience: '../team/category/computational-social-science.html',
+        userModelingAndPersonalization: '../team/category/user-modeling-and-personalization.html',
         creativeVision: '../team/category/creative-vision.html',
         allTeam: '../team/category/all.html',
         publications: '../publications.html',
@@ -121,10 +121,12 @@
         teamMemberInfo.imageUrl = teamMemberInfo.imageUrl.slice(3);
       }
 
-      const teamMemberName = teamMemberInfo.name;
+      const teamMemberAuthorNames = teamMemberInfo.authorNames;
 
       publicationsForTeamMember = publicationsList.filter((publication) => {
-        return publication.authors.includes(teamMemberName);
+        return teamMemberAuthorNames.some((name) => {
+          return publication.authors.includes(name);
+        });
       });
 
       publicationsForTeamMember.forEach((publication) => {
